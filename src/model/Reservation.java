@@ -3,10 +3,10 @@ package model;
 import java.util.Date;
 
 public class Reservation {
-    Customer customer;
-    IRoom room;
-    Date checkInDate;
-    Date checkOutDate;
+    public Customer customer;
+    public IRoom room;
+    public Date checkInDate;
+    public Date checkOutDate;
 
     public Reservation(Customer customer, IRoom room, Date checkInDate, Date checkOutDate){
         this.customer = customer;

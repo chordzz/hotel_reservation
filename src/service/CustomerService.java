@@ -26,7 +26,7 @@ public class CustomerService {
         customers.add(new Customer(firstName, lastName, email));
     }
 
-    public Customer getCustomer(String customerEmail){
+    public static Customer getCustomer(String customerEmail){
         for (Customer customer : customers){
             if(customer.email == customerEmail){
                 return customer;
@@ -35,7 +35,7 @@ public class CustomerService {
         return null;
     }
 
-    public Collection<Customer> getAllCustomers() {
+    public static Collection<Customer> getAllCustomers() {
 /*
         List<Customer> allCustomers = new ArrayList<Customer>();
 
