@@ -8,11 +8,15 @@ import java.util.List;
 
 public class CustomerService {
 
-    public static String email;
-    public static String firstName;
-    public static String lastName;
-    public static String customerEmail;
+    private static CustomerService customerService = null;
     public static List<Customer> customers = new ArrayList<Customer>();
+
+    public String email;
+    public String firstName;
+    public String lastName;
+    public String customerEmail;
+
+    public CustomerService() {};
 
     public CustomerService(String email, String firstName, String lastName, String customerEmail) {
         this.email = email;
@@ -21,29 +25,28 @@ public class CustomerService {
         this.customerEmail = customerEmail;
     }
 
+    public static CustomerService getInstance() {
+        if (customerService == null)
+            customerService = new CustomerService();
 
-    public static void addCustomer(String email, String firstName, String lastName){
+        return customerService;
+    }
+
+
+    public void addCustomer(String email, String firstName, String lastName){
         customers.add(new Customer(firstName, lastName, email));
     }
 
-    public static Customer getCustomer(String customerEmail){
+    public Customer getCustomer(String customerEmail){
         for (Customer customer : customers){
-            if(customer.email == customerEmail){
+            if(customer.email.equals(customerEmail)){
                 return customer;
             }
         }
         return null;
     }
 
-    public static Collection<Customer> getAllCustomers() {
-/*
-        List<Customer> allCustomers = new ArrayList<Customer>();
-
-        for (Customer customer : customers) {
-            allCustomers.add(customer);
-        }
-        return allCustomers;
-*/
+    public Collection<Customer> getAllCustomers() {
         return customers;
     }
 
